@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL Query Builder</title>
+</head>
+<body>
+<h1>SQL Query Builder</h1>
+<form action="/query" method="POST">
+<label for="query">Enter your SQL query:</label>
+<textarea id="query" name="query" rows="4" cols="50"></textarea>
+<br>
+<input type="submit" value="Execute Query">
+</form>
+<br>
+{% if results %}
+<h2>Query Results:</h2>
+<table border="1">
+<thead>
+<tr>
+<th>#</th>
+<th>Username</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+{% for result in results %}
+<tr>
+<td>{{ result[0] }}</td>
+<td>{{ result[1] }}</td>
+<td>{{ result[2] }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% elif error %}
+<h2>Error:</h2>
+<p>{{ error }}</p>
+{% endif %}
+</body>
+</html>
+
